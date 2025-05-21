@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter,Navigate, Route, Routes } from 'react-router-dom'
 import Homepage from './pages/home/components/Homepage';
 import Dashboard from './pages/dashboard/components/Dashboard';
 import Analytics from './pages/analytics/components/Analytics';
@@ -23,6 +23,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path='/home' element={<Homepage />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/analytics' element={<Analytics />}></Route>
