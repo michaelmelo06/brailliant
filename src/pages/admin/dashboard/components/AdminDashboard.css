@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.admindashboard-title {
+    margin-top: 3rem;
+    margin-left: 7rem;
+    font-size: 42px;
+    font-weight: bold;
+
+}
+
+.admincard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    
+}
+
+.admincard {
+    background-color: #ffd7cb;
+    border-radius: 20px;
+    border-color: #fd9d46;
+    border-style: solid;
+    border-width: 1px;
+
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: black;
+}
+.admincard p {
+    color: gray;
+}
+
+.admincard:hover {
+    transform: scale(1.05);
+}
+
+.admindashboard-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #fd9d46;
+}

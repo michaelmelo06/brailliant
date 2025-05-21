@@ -1,0 +1,38 @@
+.header {
+  background-color: #1d2d38;
+  color: white;
+  padding: 1rem 7.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 35px;
+
+}
+
+.header nav a {
+  color: white;
+  margin-right: 4rem;
+  text-decoration: none;
+}
+
+.header .login-btn {
+  background-color: white;
+  color: #1d2d38;
+  border: none;
+  font-weight: bold;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 7rem;
+  height: 2.3rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.header .login-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

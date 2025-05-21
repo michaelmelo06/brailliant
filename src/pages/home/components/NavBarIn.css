@@ -1,0 +1,52 @@
+.header {
+  background-color: #1d2d38;
+  color: white;
+  padding: 1rem 7.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header nav a {
+  color: white;
+  margin-right: 4rem;
+
+}
+
+.header .login-btn {
+  background-color: white;
+  color: #1d2d38;
+  border: none;
+  font-weight: bold;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 7rem;
+  height: 2.3rem;
+}
+
+.icon {
+  height: 2.5rem;
+  width: auto;
+  border-radius: 50%;
+  margin: 0;
+  cursor: pointer; 
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+
+.icon:hover {
+  filter: brightness(70%);
+
+}
+
+.header nav {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

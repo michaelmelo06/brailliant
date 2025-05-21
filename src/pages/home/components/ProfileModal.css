@@ -1,0 +1,97 @@
+body.profile-active-modal {
+    overflow-y: hidden;
+}
+
+
+.profile-modal,
+.profile-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.profile-overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.profile-modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    border-radius: 3px;
+    width: 300px;
+    height: 400px;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: center;
+    padding: 50px;
+}
+
+.profile-modal-content h1 {
+    color: black;
+    font-size: 32px;
+    margin: 0;
+    margin-top: 25px;
+    line-height: 1;
+}
+
+.profile-modal-content h3 {
+    margin: 0;
+    font-weight: normal;
+    line-height: 1;
+    color: rgb(92, 92, 92);
+
+}
+
+.profile-modal-content p {
+    margin: 0;
+    color: gray;
+}
+
+
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    border: none;
+}
+
+.profile-modal-content button {
+    margin-top: 25px;
+    height: 2.6rem;
+}
+
+.edit {
+    background-color: #4a8788;
+    width: 100%;
+    border: none;
+    color: white;
+    
+    border-radius: 5px;
+}
+
+.logout {
+    background-color: #f04438;
+    width: 100%;
+    border: none;
+    color: white;
+   
+    border-radius: 5px;
+}
+
+
+
+.profile-icon {
+    border-radius: 50%;
+    height: 150px;
+    width: auto;
+}

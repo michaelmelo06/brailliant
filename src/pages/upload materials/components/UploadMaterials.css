@@ -1,0 +1,92 @@
+.uploadmaterial-container {
+    padding-top: 2rem;
+    display: flex;
+}
+
+.left-container {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    vertical-align: bottom
+}
+
+.left-container button {
+  height: 2.5rem;
+  width: 15rem;
+  background-color: #254edb;
+  color: white;
+  font-weight: bold;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.left-container button:hover {
+  background-color: #1e3ca8; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.lower-left-container {
+    justify-content: left;
+    margin-top: 50px;
+
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    margin-top: 30px;
+    border: 2px dashed #3a7c7d;
+    display: inline-block;
+    padding: 25px 70px;
+    cursor: pointer;
+    border-radius: 10px;
+    color: gray;
+}
+
+.right-container {
+    width: 50%;
+}
+
+
+.right-container input {
+    width: 75%;
+    height: 2rem;
+    border-radius: 5px;
+    border-color: #3a7c7d;
+    border-style: solid;
+}
+
+.right-container button {
+  width: 75%;
+  height: 2.5rem;
+  border-radius: 5px;
+  background-color: #3a7c7d;
+  margin-top: 150px;
+  border: none;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.right-container button:hover {
+  background-color: #2f6667; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.image-bd {
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
