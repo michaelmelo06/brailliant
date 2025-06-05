@@ -17,13 +17,18 @@ const BookSchema = new Schema({
     book_level: {
         type: String
     },
+    book_description: {
+        type: String
+    },
     book_img: {
         type: String
     },
     book_file: {
         type: String
+    },
+    book_last_modified: {
+        type: Date
     }
-
 })
 
 const Book = model('Book', BookSchema)

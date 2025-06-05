@@ -1,0 +1,98 @@
+import React, { useState, useEffect } from 'react';
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import './Profile.css'
+import './ProfileHeader.css'
+import './SignInModal.css'
+import DropDownMenu from '../../../../global/components/user/DropDownMenu';
+import SideNavigation from '../../../../global/components/user/SideNavigation'
+
+export default function Profile() {
+
+    const navigate = useNavigate()
+
+    const [modal, setModal] = useState(false)
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        setUsers(JSON.parse(localStorage.getItem('users')))
+    }, [])
+
+    const toggleDropdown = () => {
+        setShowDropdown((prev) => !prev);
+    };
+
+
+    const toggleModal = () => {
+        setModal(!modal)
+    }
+    if (modal) {
+        document.body.classList.add('active-modal')
+    }
+    else {
+        document.body.classList.remove('active-modal')
+    }
+
+
+    return (
+        <div className='container'>
+            {modal && (
+                <div className='modal'>
+                    <div className='overlay' onClick={toggleModal} ></div>
+                    <div className='otp-modal-content'>
+                        <div className='otp-loginmodal'>
+                            <button className='close-modal' onClick={toggleModal}>x </button>
+                            <label className='otp-head'>Verification Successful</label>
+                            <label className='otp-text'>Explore more of Brailliant features for activated users!</label>
+                            <img src={require('../assets/check.png')} />
+
+                            <button className='otp-login-modal' onClick={toggleModal}>Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <div>
+                <SideNavigation />
+            </div>
+            <div className='profile-containers'>
+                <div className='profile-header'>
+                    <label>Profile</label>
+                    <nav onClick={toggleDropdown}>
+                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <p>{users.user_fname}</p>
+                    </nav>
+                </div>
+                {showDropdown && <DropDownMenu />}
+                <div className='profile-body'>
+                    <div className='profile-image'>
+                        <img className='profile-img' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <button className='profile-upload'> <img src={require('../assets/upload.png')} />Upload Picture</button>
+                    </div>
+                    <div className='profile-info-section'>
+                        <div className='profile-my-profile'>
+                            <label>My Profile</label>
+                            <button onClick={() => { navigate('/edit/profile') }}>Edit<img src={require('../assets/edit.png')} /></button>
+                        </div>
+                        <div className='profile-info'>
+                            <div className='profile-1'>
+                                <label>Personal Information</label>
+                            </div>
+                            <div className='profile-2'>
+                                <label>First Name: {users.user_fname}</label>
+                                <label>Last Name: {users.user_lname}</label>
+                            </div>
+                            <div className='profile-3'>
+                                <label>DOB: {users.user_dob}</label>
+                                <label>Email: {users.user_email}</label>
+                            </div>
+                        </div>
+                        <div className='profile-activate'>
+                            <label>Account Status: {users.user_status ? users.user_status : "Not Activated"}</label>
+                            <button onClick={() => users.user_status ? toggleModal() : navigate('/account-activation')}>Activate Account<img src={require('../assets/edit.png')} /></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

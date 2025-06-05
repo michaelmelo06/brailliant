@@ -17,15 +17,18 @@ const UserSchema = new Schema({
     user_password: {
         type: String
     },
-    user_last_in:{
+    user_last_in: {
         type: Date
     },
-    user_recent_act:{
+    user_recent_act: {
         type: String
     },
+    user_status: {
+        type: String
+    }
 
-   
-    
+
+
 
 })
 

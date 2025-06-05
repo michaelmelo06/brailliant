@@ -1,0 +1,125 @@
+.bs-container {
+    width: 100%;
+}
+
+.bs-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bs-title label {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.book-session {
+    padding: 40px;
+}
+
+.bs-translate {
+    display: flex;
+}
+
+.bs-text {
+    width: 50%;
+    padding: 40px;
+}
+
+.bs-braille {
+    width: 50%;
+    padding: 40px;
+}
+
+.bs-page {
+    display: flex;
+    justify-content: right;
+}
+
+.bs-preview {
+    display: flex;
+    justify-content: right;
+}
+
+.textarea-text {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.textarea-braille {
+    width: 100%;
+    height: 30%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.bs-sync {
+    border: none;
+    background-color: #f88800;
+    font-weight: bold;
+    font-size: 16px;
+    width: 120px;
+    height: 30px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.bs-end {
+    border: none;
+    background-color: red;
+    font-weight: bold;
+    font-size: 16px;
+    width: 150px;
+    height: 30px;
+    color: white;
+    border-radius: 50px;
+}
+
+.bs-page-button button {
+    border: none;
+    height: 28px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    cursor: pointer;
+}
+
+.bs-page-button {
+    display: flex;
+    gap: 5px;
+
+}
+
+
+
+.highlighted-textarea {
+    margin-top: 10px;
+    white-space: pre-wrap;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    min-height: 150px;
+    border: 1px solid #ccc;
+    height: 100%;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.highlighted-textarea {
+    overflow-y: auto;
+    max-height: 300px;
+}

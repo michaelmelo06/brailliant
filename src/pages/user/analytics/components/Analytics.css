@@ -1,0 +1,100 @@
+.analytics-body {
+
+    height: 100%;
+}
+
+.analytics {
+    padding: 40px;
+}
+
+.analytics-performance {
+    display: flex;
+    margin-top: 80px;
+}
+
+.analytics-cp {
+    width: 60%;
+
+}
+
+.analytics-cp label {
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.analytics-tb {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.analytics-tb label {
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.cp {
+    margin-top: 10px;
+    width: 90%;
+    height: 100%;
+    border: 2px solid gray;
+    border-radius: 30px;
+    height: 250px;
+}
+
+.tb {
+    margin-top: 10px;
+    width: 90%;
+    height: 100%;
+    border: 2px solid gray;
+    border-radius: 30px;
+    height: 250px;
+
+}
+
+
+.analytics-details {
+    display: flex;
+    justify-content: space-evenly;
+    height: 150px;
+}
+
+.analytics-student {
+    background-color: #9aaeff;
+    border-radius: 20px;
+    width: 30%;
+    padding: 20px;
+    height: 100%;
+}
+.analytics-title{
+    font-weight: bold;
+}
+.analytics-count{
+    font-weight: bold;
+    font-size: 80px;
+}
+.students-count{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+.analytics-books-approved {
+    background-color: #f9ad81;
+    border-radius: 20px;
+    width: 30%;
+    padding: 20px;
+    height: 100%;
+
+}
+
+.analytics-completion-rate {
+    background-color: #f9ad81;
+    border-radius: 20px;
+    width: 30%;
+    padding: 20px;
+    height: 100%;
+}

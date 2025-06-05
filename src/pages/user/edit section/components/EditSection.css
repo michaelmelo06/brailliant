@@ -1,0 +1,126 @@
+.es-body {
+    padding: 40px;
+}
+
+.edit-sect {
+    width: 100%;
+}
+
+.es-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.level-section {
+    font-weight: bold;
+    font-size: 35px;
+    color: black;
+}
+
+.es-students {
+    background-color: #d9d9d9;
+    height: 100px;
+    width: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.es-students-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+
+.es-navigate {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    margin-top: 20px;
+}
+
+.es-left input {
+    border: 2px solid #f88800;
+    border-radius: 10px;
+    height: 25px;
+    width: 450px;
+    margin-left: 30px;
+}
+
+.es-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.es-buttons button {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 150px;
+    height: 35px;
+    background-color: white;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+.es-table {
+    margin-top: 20px;
+    width: 100%;
+    height: 400px;
+    background-color: #ecf0ff;
+    border-radius: 40px;
+
+}
+
+.es-table table {
+    padding: 30px;
+    color: black;
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+    table-layout:inherit;
+}
+
+
+
+.es-table tr:hover {
+    background-color: #d1c9fb;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.es-save {
+    border: none;
+    margin-top: 20px;
+    border-radius: 40px;
+    height: 40px;
+    width: 100px;
+
+    background-color: #f88800;
+    font-weight: bold;
+    font-size: 20px;
+    float: right;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.count {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.c {
+    font-size: 12px;
+}
+
+.highlighted {
+    background-color: #ecf0ff;
+}

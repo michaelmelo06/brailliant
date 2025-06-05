@@ -1,0 +1,57 @@
+.sub-menu-wrap {
+    position: absolute;
+    top: 110px;
+    /* adjust as needed */
+    right: 90px;
+    /* match padding or icon placement */
+    width: 200px;
+    z-index: 999;
+}
+
+
+.sub-menu {
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    color: black;
+    border: 1px solid gray;
+}
+
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 15px 0 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info label {
+    font-weight: 500;
+}
+
+.sub-menu-link {
+    display: flex;
+    align-items: center;
+    text-align: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.sub-menu-link p {
+    width: 100%;
+    color: black;
+}
+
+.sub-menu-link a {
+    text-decoration: none;
+}
+
+.sub-menu-link:hover p {
+    font-weight: 600;
+}

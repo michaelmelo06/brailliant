@@ -1,0 +1,113 @@
+.profile-form p{
+  margin: 0;
+  line-height: 5px;
+}
+.profile-page {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+
+.avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: #bbb;
+  border-radius: 50%;
+}
+
+.profile-container {
+  padding: 2rem;
+  margin: 0 auto;
+  width: 1000px;
+  
+}
+
+.profile-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  
+}
+
+.profile-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  
+}
+
+.profile-table {
+  border-collapse: collapse;
+  width: 300px;
+  height: 200px;
+}
+
+.profile-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+
+.profile-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 500px;
+  
+}
+
+.form-row1 {
+  display: flex;
+  gap: 1rem;
+  width: 600px;
+ 
+}
+
+.form-row1 p{
+  margin-right: 165px;
+}
+
+.form-row2 {
+  display: flex;
+  gap: 1rem;
+  width: 500px;
+  
+}
+
+.form-row2 input {
+  width: 50%;
+}
+
+.profile-form input {
+  padding: 0.5rem;
+  border: 1px solid #2e7c74;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.editsave-btn {
+  
+  background-color: #2e7c74;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+}
+
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+}

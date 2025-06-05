@@ -1,0 +1,77 @@
+.landing-page-container {
+    background-color: #39b3f9;
+    color: white;
+    /*text-align: center;*/
+    height: 100vh;
+    width: 100%;
+
+    background-size: cover;
+
+    -moz-box-shadow: inset 0px 850px 500px -500px #d9d9d9;
+    -webkit-box-shadow: inset 0px 850px 500px -500px #d9d9d9;
+    -o-box-shadow: inset 0px 850px 500px -500px #d9d9d9;
+    box-shadow: inset 0px 600px 200px -100px #d9d9d9;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+
+.landing-page-header {
+    width: 100%;
+    height: 50px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing-page-logo {
+    height: 50px;
+    width: auto;
+}
+
+
+
+.sign-in-btn {
+    margin-right: 150px;
+    border: none;
+    color: white;
+    background-color: #101734;
+    cursor: pointer;
+    height: 45px;
+    width: 145px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+
+
+.landing-page-body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.landing-page-hero {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    width: 50%;
+    height: 40%;
+    color: white;
+}
+
+.landing-page-hero label{
+    font-weight: bold;
+    font-size: 100px;
+    color: #101734;
+}

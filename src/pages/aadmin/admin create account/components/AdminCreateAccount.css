@@ -1,0 +1,103 @@
+.admin-cs-container {
+    width: 100%;
+}
+
+.admin-create-account {
+    padding: 40px;
+}
+
+.create-acc-title {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.admin-create {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.create-upload {
+    display: flex;
+    flex-direction: column;
+}
+
+.ca-upload-img{
+    height: 200px;
+    width: auto;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.create-upload button {
+    width: 200px;
+    height: 2.5rem;
+    border-radius: 5px;
+    background-color: #f88800;
+    margin-top: 60px;
+    border: none;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.create-upload button:hover {
+    background-color: #f88800dd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cad {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cad-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-acc-details input {
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    background-color: #d9d9d9;
+}
+
+.create-acc-details label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.create-acc-details select {
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    background-color: #d9d9d9;
+}
+
+.admin-create-btn {
+    width: 200px;
+    height: 2.5rem;
+    border-radius: 20px;
+    background-color: #f88800;
+    margin-top: 20px;
+    border: none;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

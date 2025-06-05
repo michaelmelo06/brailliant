@@ -1,0 +1,98 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+
+.modal,
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    border-radius: 3px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.modal-content h2 {
+    color: black;
+    font-size: 32px;
+
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    border: 1px solid #d2d6db;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+
+.loginmodal {
+    width: 100%;
+    padding: 50px;
+}
+
+.loginmodal input {
+    border-style: solid;
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+    border-color: #101734;
+    margin-bottom: .5rem;
+}
+
+.loginmodal p {
+    margin: 0;
+    margin-top: 10px;
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+
+.login-logo {
+    width: 400px;
+    margin-top: 50px;
+}
+
+
+.login-modal {
+  width: 100%;
+  height: 2.2rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #101734;
+  margin-top: 5.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.login-modal:hover {
+  background-color: #101734; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

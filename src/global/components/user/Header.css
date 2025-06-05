@@ -1,0 +1,58 @@
+.header-container {
+    background-color: #101734;
+    width: 100%;
+    height: 150px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 60px;
+
+    overflow: visible;
+    position: relative;
+}
+
+.header-container nav {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-right: 80px;
+}
+
+.header-container p{
+    margin-right: 50px;
+    margin-left : 10px;
+    font-weight: bold;
+}
+
+.header-search {
+    height: 50px;
+    border: 3px solid #f88800;
+    border-radius: 15px;
+    width: 700px;
+    margin-left: 80px;
+    background-image: url('../../asset/Vector.png');
+    background-position: 10px 5px;
+    background-repeat: no-repeat;
+    padding-left: 60px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.icon {
+    height: 3.5rem;
+    width: auto;
+    border-radius: 50%;
+    margin: 0;
+    cursor: pointer;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.icon:hover {
+    filter: brightness(70%);
+
+}

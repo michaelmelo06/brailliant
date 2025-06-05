@@ -1,0 +1,55 @@
+.ds-body{
+    width: 100%;
+}
+
+.ds-settings{
+    padding: 50px;
+}
+.ds-1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ds-1 label{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ds-1 button{
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 18px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.ds-2 {
+    display: flex;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.ds-2 img{
+    width: 100px;
+    height: 100px;
+}
+
+.ds-info label{
+    font-size: 18px; 
+    margin-bottom: 10px;
+}
+
+.ds-info p{
+    font-size: 18px; 
+}
+
+.ds-info{
+    margin-left: 50px;
+    display: flex;
+      flex-direction: column;
+
+}
+

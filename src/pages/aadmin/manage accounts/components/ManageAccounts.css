@@ -1,0 +1,107 @@
+.admin-ma-container {
+    width: 100%;
+}
+
+.admin-manage-accounts {
+    padding: 40px;
+}
+
+.admin-ma-accounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.all-acc {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.admin-ma-active {
+    border-radius: 20px;
+    background-color: #d9d9d9;
+    width: 200px;
+    height: 60px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.admin-accounts {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.admin-accounts-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-accounts-actions input {
+    border: 2px solid #f88800;
+    border-radius: 10px;
+    height: 25px;
+    width: 450px;
+}
+
+.admin-accounts-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.admin-accounts-buttons button {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    height: 30px;
+    width: 150px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ma-table {
+    margin-top: 15px;
+    height: 420px;
+    background-color: #f1f0ff;
+    border-radius: 20px;
+    padding: 20px;
+
+}
+
+.admin-ma-table {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    text-align: left;
+    table-layout: auto;
+    border-collapse: collapse;
+}
+
+.admin-ma-table tr:hover {
+    background-color: #d1c9fb;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.add-img{
+    width: 20px;
+}
+
+.ma-count{
+    font-weight: bold;
+    font-size: 50px;
+}
+
+
+.ma-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlighted {
+    background-color: #d1c9fb;
+}

@@ -1,0 +1,51 @@
+.as {
+    width: 100%;
+    padding: 40px;
+}
+
+.as input {
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    background-color: #d9d9d9;
+}
+
+.as select {
+    border: none;
+    border-radius: 20px;
+    width: 250px;
+    height: 35px;
+    background-color: #d9d9d9;
+}
+
+.as label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.as1 {
+    display: flex;
+    gap: 20px;
+}
+
+.as2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.as-add {
+    border: none;
+    background-color: #f88800;
+    color: black;
+    border-radius: 20px;
+    height: 40px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

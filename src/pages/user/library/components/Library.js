@@ -1,0 +1,75 @@
+import React, { useState, useEffect } from 'react';
+import './Library.css'
+import SideNavigation from '../../../../global/components/user/SideNavigation'
+import Header from '../../../../global/components/user/Header'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+
+
+
+export default function Library() {
+
+    const navigate = useNavigate()
+
+    const [book, setAllBooks] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/allbooks')
+            .then((response) => {
+                setAllBooks(response.data)
+            })
+            .catch((error) => {
+                console.log("eto ang error mo " + error)
+            })
+    }, [])
+
+    return (
+        <div className='container'>
+            <div>
+                <SideNavigation />
+            </div>
+            <div className='library-container'>
+                <div className='library-header'>
+                    <Header />
+                </div>
+                <div className='library-body'>
+                    <div className='library'>
+                        <label>Library</label>
+                        <div className='library-books'>
+
+                            {book.books?.map((book) => (
+                                <img
+                                    src={require(`../../../../images/${book.book_img}`)}
+                                    className='library-book'
+                                    onClick={() => { navigate('/book/detail', { state: { book: book } }); }}
+                                />
+                            ))}
+
+                        </div>
+                    </div>
+                    <div className='library-side'>
+                        <label>Braille Characters</label>
+                        <div className='library-braille-1'>
+                            <div className='library-module'>
+                                <img src={require('../assets/Module 1.png')} />
+                                <img src={require('../assets/Module 2.png')} />
+                            </div>
+
+                            <label>Grade 1 Braille</label>
+                        </div>
+                        <div className='library-braille-2'>
+                            <div className='library-module'>
+                                <img src={require('../assets/Module 1.png')} />
+                                <img src={require('../assets/Module 3.png')} />
+                            </div>
+                            <label>Grade 2 Braille</label>
+                        </div>
+                        <label>Need more?</label>
+                        <p>Upload your own learning materials and get it approved!</p>
+                        <button onClick={() => { navigate('/upload') }}><img src={require('../assets/upload.png')} />UPLOAD BOOKS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

@@ -17,7 +17,7 @@ const findAllBooks = (req, res) => {
 }
 
 const findBookByName = (req, res) => {
-    Book.findOne({ name: req.params.namex })
+    Book.findOne({ _id: req.params.namex })
         .then((theBook) => {
             res.json({ book: theBook })
         })
@@ -61,4 +61,14 @@ const deleteBook = (req, res) => {
         })
 }
 
-module.exports = { testconnection, deleteBook, updateBook, findBookByName, findAllBooks, createBook }
+const getBookCount = async (req, res) => {
+    try {
+        const count = await Book.countDocuments();
+        res.json({ count });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+
+module.exports = { testconnection, deleteBook, updateBook, findBookByName, findAllBooks, createBook, getBookCount }

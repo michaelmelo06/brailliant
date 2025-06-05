@@ -1,0 +1,179 @@
+.cs-body {
+    width: 100%;
+    padding: 40px;
+    height: 100%;
+}
+
+.cs-action {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.create-section {
+    border: none;
+    background-color: #101734;
+    color: white;
+    border-radius: 30px;
+    height: 45px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 220px;
+    cursor: pointer;
+}
+
+.cs-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.cs-num {
+    display: flex;
+    margin-right: 80px;
+    gap: 15px;
+}
+
+.add-student {
+    border: none;
+    background-color: #f88800;
+    color: #101734;
+    border-radius: 30px;
+    height: 45px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 180px;
+    cursor: pointer;
+
+}
+
+.cs-students {
+    background-color: #d9d9d9;
+    height: 100px;
+    width: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cs-students-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+.cs-sections {
+    background-color: #d9d9d9;
+    height: 100px;
+    width: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cs-section-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+
+
+.cs-table {
+    background-color: #ecf0ff;
+    width: 93%;
+    border-radius: 20px;
+    padding: 20px;
+    height: 55%;
+}
+
+.cs-list {
+    width: 100%;
+    height: 100%;
+}
+
+.cs-table-navigation {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.cs-table-navigation input {
+    width: 400px;
+    height: 25px;
+    border: 3px solid #f88800;
+    border-radius: 10px;
+}
+
+.cs-table-navigation select {
+    width: 300px;
+    height: 30px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+}
+
+
+
+
+.edit-section {
+    border: none;
+    background-color: #101734;
+    color: white;
+    border-radius: 30px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 220px;
+    cursor: pointer;
+}
+
+
+.cs-tbl-cont {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.cs-table table {
+    margin-top: 20px;
+    width: 100%;
+    text-align: left;
+    table-layout: initial;
+    border-collapse: collapse;
+}
+
+.cs-table tr:hover {
+    background-color: #d1c9fb;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.highlighted {
+    background-color: #d1c9fb;
+}
+
+
+
+.cs-body button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.count {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.c {
+    font-size: 12px;
+}

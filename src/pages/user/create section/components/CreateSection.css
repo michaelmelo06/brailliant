@@ -1,0 +1,191 @@
+.cre-s {
+    width: 100%;
+}
+
+.cre-try {
+    padding: 40px;
+}
+
+.section-create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.section-create label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.section-create input {
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    height: 40px;
+}
+
+.section-create select {
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    height: 40px;
+}
+
+
+
+
+.section-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-form label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.section-form input {
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    height: 40px;
+}
+
+.section-form select {
+    border: none;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    height: 40px;
+}
+
+.cr-frm {
+    display: flex;
+}
+
+.c1 {
+    display: flex;
+
+    gap: 20px;
+}
+
+.c2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-name {
+    width: 250px;
+}
+
+.grade-level {
+    width: 150px;
+}
+
+.student-id {
+    width: 150px;
+}
+
+.last-name {
+    width: 200px;
+}
+
+.create-section-buttons {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.add-section {
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.clear-form {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    border: 1px solid black;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.section-student-list {
+    width: 40%;
+}
+
+.sect-save {
+    border: none;
+    background-color: #f88800;
+    color: black;
+    border-radius: 20px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 16px;
+    float: right;
+    cursor: pointer;
+    margin-right: 150px;
+}
+
+.section-import {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    height: 35px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 16px;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.section-student-list-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.section-student-list-top label {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.section-student-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-section-students {
+    margin-top: 20px;
+    background-color: #d5ddff;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.create-section-students table {
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+    
+}

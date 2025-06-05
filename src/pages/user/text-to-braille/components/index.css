@@ -1,0 +1,12 @@
+.braille-letter {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 4px;
+}
+
+.braille-col {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  gap: 4px;
+}

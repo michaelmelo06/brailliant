@@ -1,0 +1,119 @@
+.ttb-body {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.ttb-text label {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.ttb-text p {
+    font-size: 18px;
+}
+
+
+
+.ttb-translate {
+    display: flex;
+    width: 90%;
+    height: 40%;
+    margin-bottom: 10px;
+}
+
+.char-limit {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 0px;
+    margin-top: 10px;
+}
+
+.ttb-translate textarea {
+    border: 2px solid #8f8f8f;
+    padding: 20px;
+    width: 50%;
+    height: 90%;
+    border-radius: 30px;
+}
+
+.ttb-preview {
+    width: 50%;
+    height: 100%;
+    background-color: #cecece;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    height: auto;
+    margin: 0 auto;
+    width: 50%
+}
+
+.ttb-body button {
+    border: none;
+    color: black;
+    background-color: #ff8b47;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-right: 160px;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.label {
+    display: block;
+    color: #4a4a4a;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #38b2ac;
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.input {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+}
+
+.input:focus {
+    border-color: #6b7280;
+    outline: none;
+}
+
+.button {
+    background-color: #6b7280;
+    color: white;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #374151;
+}

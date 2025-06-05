@@ -1,0 +1,137 @@
+.admin-home-container {
+    width: 100%;
+}
+
+.admin-home {
+    padding: 40px;
+}
+
+.admin-home-summary {
+    display: flex;
+}
+
+
+
+.admin-summary {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 60%;
+    margin-right: 20px;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.admin-home-info {
+    width: 30%;
+}
+
+.admin-home-info label {
+    font-weight: bold;
+}
+
+.admin-home-info img {
+    width: 90px;
+}
+
+.admin-home-active {
+    border-radius: 20px;
+    background-color: #9aaeff;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 100px;
+}
+
+.ah-count {
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.ah-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-home-approved {
+    border-radius: 20px;
+    background-color: #f9ad81;
+    padding: 20px;
+    height: 100px;
+}
+
+
+.admin-home-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.ml-book {
+    width: 400px;
+}
+
+.admin-ml {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 30%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 32px;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-ml:hover {
+    transform: scale(1.02);
+}
+
+
+.admin-ma {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 30%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 32px;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+}
+
+.admin-ma:hover {
+    transform: scale(1.02);
+}
+
+
+.admin-cr {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 30%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 32px;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+}
+
+.admin-cr:hover {
+    transform: scale(1.02);
+}

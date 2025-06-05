@@ -1,0 +1,131 @@
+.upload-container {
+  width: 100%;
+}
+
+.uploadmaterial-container {
+  padding-top: 2rem;
+  display: flex;
+}
+
+.upload-body {
+  padding-top: 20px;
+}
+
+.up {
+  font-weight: bold;
+  font-size: 35px;
+
+  margin-left: 80px;
+}
+
+.left-container {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
+  vertical-align: bottom
+}
+
+.left-container button {
+  height: 2.7rem;
+  width: 18rem;
+  background-color: #101734;
+  color: white;
+  font-weight: bold;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.left-container button:hover {
+  background-color: rgba(1, 10, 40, 0.971);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.lower-left-container {
+  justify-content: left;
+  margin-top: 50px;
+
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  margin-top: 30px;
+  border: 2px dashed #3a7c7d;
+  display: inline-block;
+  padding: 25px 70px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: gray;
+}
+
+.right-container {
+  width: 50%;
+}
+
+.right-container input {
+  width: 75%;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: #101734;
+  border-style: solid;
+}
+
+.right-container textarea {
+  width: 75%;
+  height: 2rem;
+  border-radius: 5px;
+  border-color: #101734;
+  border-style: solid;
+  border: 2px solid black;
+}
+
+.right-container button {
+  width: 75%;
+  height: 2.5rem;
+  border-radius: 5px;
+  background-color: #f88800;
+  margin-top: 100px;
+  border: none;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 16px;
+
+}
+
+.right-container button:hover {
+  background-color: #f88800dd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.image-bd {
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+.upload-image {
+  margin-top: 30px;
+  border: 2px solid gray;
+  display: inline-block;
+  padding: 25px 70px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: gray;
+  height: 250px;
+  margin-bottom: 20px;
+ 
+}

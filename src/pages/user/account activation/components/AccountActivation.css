@@ -1,0 +1,55 @@
+.aa-container {
+    width: 100%;
+}
+
+.account-activation {
+    padding: 40px;
+}
+
+.aa-pls {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.mail {
+    width: 500px;
+}
+
+.aa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aa-title {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.aa input{
+    margin-top: 10px;
+    width: 400px;
+    height: 50px;
+    border:2px solid blue;
+    padding: 0px 20px;
+    font-size: 20px;
+}
+
+.aa-text {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.verify-btn{
+    margin-top: 30px;
+    width: 200px;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    background-color: #ff8b47;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
