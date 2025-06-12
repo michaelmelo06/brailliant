@@ -1,6 +1,6 @@
 const { useRef } = require("react")
 const Section = require("../models/section.model")
-
+const mongoose = require('mongoose');
 
 const testconnection = (req, res) => {
     res.json({ status: "Okay connection" })
@@ -37,7 +37,12 @@ const findSectionById = (req, res) => {
 };
 
 const createSection = (req, res) => {
-    Section.create(req.body)
+    const sectionData = {
+        ...req.body,
+        section_instructor: new mongoose.Types.ObjectId(req.body.section_instructor)
+    };
+
+    Section.create(sectionData)
         .then((newSection) => {
             res.json({ section: newSection, status: 'Okay' })
         })
@@ -60,12 +65,12 @@ const updateSection = (req, res) => {
 }
 
 const deleteSection = (req, res) => {
-    Section.findByIdAndDelete({ _id: req.params.id })
+    Section.findOneAndDelete({ _id: new mongoose.Types.ObjectId(req.params.id) })
         .then((result) => {
             res.json({ useRef: result, status: 'Deleted Successfuly' })
         })
         .catch((err) => {
-            res.json({ message: 'Something went wrong with creating', err })
+            res.json({ message: 'Something went wrong with deleting section', err })
         })
 }
 

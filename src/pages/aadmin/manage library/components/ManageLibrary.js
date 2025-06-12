@@ -11,9 +11,10 @@ export default function ManageLibrary() {
     const navigate = new useNavigate()
     const title = 'Manage Library'
     const [selectedRowId, setSelectedRowId] = useState(null);
-
-
     const [allBooks, setAllBooks] = useState([])
+
+    const [searchQuery, setSearchQuery] = useState('');
+
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/allbooks')
@@ -58,7 +59,11 @@ export default function ManageLibrary() {
                         </div>
                         <div className='admin-all-books'>
                             <div className='admin-actions'>
-                                {/*<input placeholder='Search books'></input>*/}
+                                <input
+                                    placeholder='Search books'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+                                />
                                 <div></div>
                                 <div className='admin-ml-buttons'>
                                     <button onClick={() => {
@@ -70,7 +75,7 @@ export default function ManageLibrary() {
 
 
                                     }}>View Details <img src={require('../assets/edit.png')} /></button>
-                                    <button onClick={()=>{
+                                    <button onClick={() => {
                                         if (!selectedRowId) {
                                             alert("Please select a book.");
                                             return;
@@ -91,19 +96,24 @@ export default function ManageLibrary() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {allBooks.books?.map((book) => (
-                                            <tr
-                                                key={book._id}
-                                                onClick={() => setSelectedRowId(book._id)}
-                                                className={selectedRowId === book._id ? "highlighted" : ""}
-                                            >
-                                                <td>{book.book_title}</td>
-                                                <td>{book.book_author}</td>
-                                                <td>{book.book_genre}</td>
-                                                <td>{book.book_description}</td>
-                                                <td>{new Date(book.book_last_modified).toLocaleString()}</td>
-                                            </tr>
-                                        ))}
+                                        {allBooks.books
+                                            ?.filter((book) =>
+                                                book.book_title?.toLowerCase().includes(searchQuery) ||
+                                                book.book_author?.toLowerCase().includes(searchQuery) ||
+                                                book.book_genre?.toLowerCase().includes(searchQuery))
+                                            .map((book) => (
+                                                <tr
+                                                    key={book._id}
+                                                    onClick={() => setSelectedRowId(book._id)}
+                                                    className={selectedRowId === book._id ? "highlighted" : ""}
+                                                >
+                                                    <td>{book.book_title}</td>
+                                                    <td>{book.book_author}</td>
+                                                    <td>{book.book_genre}</td>
+                                                    <td>{book.book_description}</td>
+                                                    <td>{new Date(book.book_last_modified).toLocaleString()}</td>
+                                                </tr>
+                                            ))}
                                     </tbody>
                                 </table>
                             </div>

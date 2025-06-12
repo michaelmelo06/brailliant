@@ -12,12 +12,19 @@ import BrailleLetter from "./index";
 
 export default function BookSession() {
 
+    const navigate = useNavigate()
+
     const location = useLocation();
     const selectedBook = location.state.book.book;
     console.log(selectedBook)
 
     const [file, setFile] = useState(null)
     const [resultText, setResultText] = useState('')
+
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
 
     //TTB
 
@@ -81,7 +88,12 @@ export default function BookSession() {
                 <div className='bs-body'>
                     <div className='book-session'>
                         <div className='bs-title'>
-                            <label>{selectedBook.book_title}</label>
+                            <div>
+                                <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+                                <label>{selectedBook.book_title}</label>
+
+                            </div>
+
                             <label>Time Elapsed</label>
                         </div>
                         <div className='bs-translate'>

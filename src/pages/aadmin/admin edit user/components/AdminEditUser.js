@@ -34,7 +34,7 @@ export default function AdminEditUser() {
         if (!editUser.user_dob || new Date(editUser.user_dob) >= new Date()) {
             errors.push("Date of birth must be a past date.");
         }
-
+/**
         if (editUser.user_password.length < 6) {
             errors.push("Password must be at least 6 characters.");
         }
@@ -42,7 +42,7 @@ export default function AdminEditUser() {
         if (editUser.user_password !== cpassword) {
             errors.push("Passwords do not match.");
         }
-
+ */
         return errors;
     };
 
@@ -110,7 +110,10 @@ export default function AdminEditUser() {
                     <div className='admin-edit-account'>
 
                         <div className="profile-page">
+                            <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+
                             <main className="profile-container">
+
                                 <div className="profile-grid">
 
                                     <table className="profile-table">
@@ -170,6 +173,7 @@ export default function AdminEditUser() {
                                                 value={editUser.user_dob}
                                                 onChange={(e) => setEditUser({ ...editUser, user_dob: e.target.value })}
                                             />
+                                            {/**                                           
                                             <p>Password</p>
                                             <input
                                                 type="password"
@@ -186,6 +190,7 @@ export default function AdminEditUser() {
                                                 onChange={(e) => setCpassword(e.target.value)}
                                             />
 
+ */}
                                             <div className="form-actions">
                                                 <button onClick={confirmPassword} className="editsave-btn">Save</button>
                                                 <button onClick={() => { navigate('/admin/accounts') }} type="button" className="cancel-btn">Back</button>

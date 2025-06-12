@@ -13,13 +13,16 @@ export default function Profile() {
     const [modal, setModal] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false);
     const [users, setUsers] = useState([])
+    const [selectedImage, setSelectedImage] = useState('')
 
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
+        
     }, [])
 
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);
+        console.log(users)
     };
 
 
@@ -32,13 +35,13 @@ export default function Profile() {
     else {
         document.body.classList.remove('active-modal')
     }
-
+    
 
     return (
         <div className='container'>
             {modal && (
                 <div className='modal'>
-                    <div className='overlay' onClick={toggleModal} ></div>
+                    <div className='otp-overlay' onClick={toggleModal} ></div>
                     <div className='otp-modal-content'>
                         <div className='otp-loginmodal'>
                             <button className='close-modal' onClick={toggleModal}>x </button>
@@ -54,19 +57,55 @@ export default function Profile() {
             <div>
                 <SideNavigation />
             </div>
+
             <div className='profile-containers'>
                 <div className='profile-header'>
                     <label>Profile</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
                 {showDropdown && <DropDownMenu />}
                 <div className='profile-body'>
                     <div className='profile-image'>
-                        <img className='profile-img' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
-                        <button className='profile-upload'> <img src={require('../assets/upload.png')} />Upload Picture</button>
+
+
+                        <img
+                            className='profile-img'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
+                        {/** 
+                        <label for="image-upload" className='profile-upload'>
+                            <img src={require('../assets/upload.png')} />Upload Picture
+                        </label>
+
+                        <input
+                            id='image-upload'
+                            type='file'
+                            accept='image/*'
+                            onChange={(e) => {
+                                const file = e.target.files?.[0]
+                                setSelectedImage(
+                                    file ? URL.createObjectURL(file) : undefined
+                                )
+                            }}
+                            required
+                        />
+
+*/}
+
                     </div>
                     <div className='profile-info-section'>
                         <div className='profile-my-profile'>

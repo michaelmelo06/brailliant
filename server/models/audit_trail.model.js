@@ -11,7 +11,13 @@ const AuditTrailSchema = new Schema({
     at_date: {
         type: Date
     },
-    
+    role: {
+        type: String
+    },
+    at_detils: {
+        type: String
+    },
+
 
 })
 

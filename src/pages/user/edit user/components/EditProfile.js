@@ -16,13 +16,18 @@ export default function EditProfile() {
         user_email: '',
         user_dob: '',
         user_password: '',
+        user_img: ''
     });
     const [auditTrail, setAuditTrail] = useState({
         at_action: '',
         at_date: '',
         at_user: '',
     });
+
     const [cpassword, setCpassword] = useState('')
+    const [selectedImage, setSelectedImage] = useState('')
+    const [image, setImage] = useState(null)
+    const [imageName, setImageName] = useState('')
 
 
 
@@ -75,7 +80,7 @@ export default function EditProfile() {
             alert("Date of Birth cannot be in the future.");
             return;
         }
-
+/** 
         if (!user_password) {
             alert("Password is required.");
             return;
@@ -85,42 +90,73 @@ export default function EditProfile() {
             alert("Passwords do not match!");
             return;
         }
-
-        handleUpdateUser(editUser._id);
+*/
+        //submitimage(editUser._id)
+        handleProfileUpdate(editUser._id);
         alert("Update Successful!");
     };
 
 
-    const handleUpdateUser = async (id) => {
-        const updatedData = { ...editUser, user_recent_act: 'Edited Profile' };
+    const handleProfileUpdate = async (id) => {
+        try {
+            // 1. Upload Image (if any)
+            let updatedImage = null;
+            if (image) {
+                const formData = new FormData();
+                formData.append('image', image);
 
-        axios.put(`http://localhost:8000/api/update/user/${id}`, updatedData)
-            .then(() => {
-                console.log(updatedData, "this after update");
-                localStorage.setItem('users', JSON.stringify(updatedData));
-                setEditUser({ ...editUser, user_password: '' });
-                setCpassword('');
-                setUsers(updatedData);
-                navigate('/profile')
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                const result = await axios.put(
+                    `http://localhost:8000/upload-profile-icon/${id}`,
+                    formData,
+                    { headers: { "Content-Type": "multipart/form-data" } }
+                );
 
-        const newAudit = {
-            at_user: users.user_email,
-            at_date: new Date(),
-            at_action: 'Edited Profile'
-        };
-        setAuditTrail(newAudit);
-        console.log(newAudit);
-        await axios.post('http://localhost:8000/api/newaudittrail', newAudit);
+                updatedImage = result.data.user.user_img;
+                setEditUser(prev => ({ ...prev, user_img: updatedImage }));
+                setUsers(prev => ({ ...prev, user_img: updatedImage }));
+                setImageName('Image updated: ' + updatedImage);
+                console.log('Image updated to:', updatedImage);
+            }
+
+            // 2. Update Profile Data
+            const updatedData = {
+                ...editUser,
+                user_recent_act: 'Edited Profile',
+                ...(updatedImage && { user_img: updatedImage }) // If image was updated
+            };
+
+            await axios.put(`http://localhost:8000/api/update/user/${id}`, updatedData);
+
+            // 3. Update localStorage and state
+            localStorage.setItem('users', JSON.stringify(updatedData));
+            setEditUser(prev => ({ ...prev, user_password: '' }));
+            setCpassword('');
+            setUsers(updatedData);
+            navigate(0);
+
+            // 4. Log to Audit Trail
+            const newAudit = {
+                at_user: users.user_email,
+                at_date: new Date(),
+                at_action: 'Edited Profile'
+            };
+            setAuditTrail(newAudit);
+            await axios.post('http://localhost:8000/api/newaudittrail', newAudit);
+
+            console.log('Profile updated:', updatedData);
+            console.log('Audit trail logged:', newAudit);
+
+        } catch (error) {
+            console.error('Profile update failed:', error);
+        }
     };
+
 
 
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);
     };
+
     return (
         <div className='container'>
             <div>
@@ -130,7 +166,14 @@ export default function EditProfile() {
                 <div className='ep-header'>
                     <label>Edit Profile</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
@@ -141,27 +184,38 @@ export default function EditProfile() {
                             <h1>Your Profile</h1>
                             <div className="profile-grid">
 
-                                <table className="profile-table">
+                                <div className="profile-table">
 
-                                    <tr>
-                                        <td><strong>Last Name:</strong></td>
-                                        <td>{users.user_lname?.charAt(0).toUpperCase() + users.user_lname?.slice(1)}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>First Name:</strong></td>
-                                        <td>{users.user_fname?.charAt(0).toUpperCase() + users.user_fname?.slice(1)}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Date of Birth:</strong></td>
-                                        <td>{users.user_dob}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Email:</strong></td>
-                                        <td>{users.user_email}</td>
-                                    </tr>
+                                    <img
+                                        className='edit-profile-img'
+                                        src={
+                                            selectedImage
+                                                ? selectedImage
+                                                : users?.user_img
+                                                    ? require(`../../../../images/${users.user_img}`)
+                                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                                        }
+                                        alt="Preview"
+                                    />
 
+                                    <label for="image-upload" className='edit-profile-upload'>
+                                        <img src={require('../assets/upload.png')} />Upload Picture
+                                    </label>
 
-                                </table>
+                                    <input
+                                        id='image-upload'
+                                        type='file'
+                                        accept='image/*'
+                                        onChange={(e) => {
+                                            setImage(e.target.files[0])
+                                            const file = e.target.files?.[0]
+                                            setSelectedImage(
+                                                file ? URL.createObjectURL(file) : undefined
+                                            )
+                                        }}
+                                        required
+                                    />
+                                </div>
                                 <div className='form-container' >
 
                                     <div className="profile-form">
@@ -198,6 +252,7 @@ export default function EditProfile() {
                                             value={editUser.user_dob}
                                             onChange={(e) => setEditUser({ ...editUser, user_dob: e.target.value })}
                                         />
+                                        {/** 
                                         <p>Password</p>
                                         <input
                                             type="password"
@@ -213,10 +268,10 @@ export default function EditProfile() {
                                             value={cpassword}
                                             onChange={(e) => setCpassword(e.target.value)}
                                         />
-
+*/}
                                         <div className="form-actions">
                                             <button onClick={confirmPassword} className="editsave-btn">Save</button>
-                                            <button onClick={() => { navigate('/profile') }} type="button" className="cancel-btn">Cancel</button>
+                                            <button onClick={() => { navigate('/profile') }} type="button" className="cancel-btn">Back</button>
                                         </div>
                                     </div>
                                 </div>

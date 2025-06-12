@@ -30,7 +30,7 @@ export default function DropDownMenu() {
                     <p onClick={() => { navigate('/profile') }}>Profile</p>
                 </a>
                 <a className='sub-menu-link'>
-                    <p onClick={() => { navigate('/device-settins') }}>Device Settings</p>
+                    <p onClick={() => { navigate('/device-settings') }}>Device Settings</p>
                 </a>
                 <a className='sub-menu-link'>
                     <p onClick={logout}>Logout</p>

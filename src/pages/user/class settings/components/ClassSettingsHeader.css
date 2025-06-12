@@ -1,13 +1,14 @@
-.cs-container{
+.cs-container {
     width: 100%;
 }
 
-.cs-header label{
+.cs-header label {
     color: white;
     font-weight: bold;
     font-size: 40px;
     margin-left: 80px;
 }
+
 .cs-header {
     background-color: #101734;
     width: 100%;
@@ -19,9 +20,9 @@
     border-bottom-left-radius: 60px;
 }
 
-.cs-header p{
+.cs-header p {
     margin-right: 50px;
-    margin-left : 10px;
+    margin-left: 10px;
     font-weight: bold;
 }
 
@@ -36,7 +37,7 @@
 
 .icon {
     height: 3.5rem;
-    width: auto;
+    width: 3.5rem;
     border-radius: 50%;
     margin: 0;
     cursor: pointer;

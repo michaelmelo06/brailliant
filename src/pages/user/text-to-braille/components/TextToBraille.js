@@ -28,6 +28,7 @@ export default function TextToBraille() {
 
     useEffect(() => {
         handleSubmit({ preventDefault: () => { } });
+
     }, []);
 
     useEffect(() => {
@@ -48,12 +49,18 @@ export default function TextToBraille() {
                     <div className='ttb-header'>
                         <label>Text-to-Braille</label>
                         <nav onClick={toggleDropdown}>
-                            <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                            <img
+                                className='icon'
+                                src={
+                                    users.user_img
+                                        ? require(`../../../../images/${users.user_img}`)
+                                        : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                                }
+                            />
                             <p>{users.user_fname}</p>
                         </nav>
                     </div>
                     {showDropdown && <DropDownMenu />}
-
 
                     <form className='ttb-body' onSubmit={handleSubmit}>
                         <div className='ttb-text'>

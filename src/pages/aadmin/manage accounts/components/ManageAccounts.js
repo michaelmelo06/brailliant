@@ -17,6 +17,7 @@ export default function ManageAccounts() {
     const [selectedUser, setSelectedUser] = useState([]);
     const activatedCount = allUsers.users?.filter(user => user.user_status === "Activated").length || 0;
 
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/allusers')
@@ -54,8 +55,11 @@ export default function ManageAccounts() {
                         </div>
                         <div className='admin-accounts'>
                             <div className='admin-accounts-actions'>
-                                {/**<input placeholder='Search accounts'></input> */}
-                                <div></div>
+                                <input
+                                    placeholder='Search accounts'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+                                />
                                 <div className='admin-accounts-buttons'>
                                     <button onClick={() => { navigate('/admin/create-account') }}>Create Account <img className='add-img' src={require('../assets/add.png')} /></button>
                                     <button onClick={() => {
@@ -82,29 +86,32 @@ export default function ManageAccounts() {
                                         <th>Recent Activity</th>
                                         <th>User Status</th>
                                     </tr>
-                                    {allUsers.users?.map((user) => (
-                                        <tr
-                                            key={user._id}
-                                            onClick={() => {
-                                                setSelectedRowId(user._id)
-                                                setSelectedUser(user)
-                                            }
-                                            }
+                                    {allUsers.users
+                                        ?.filter((user) =>
+                                            user.user_fname?.toLowerCase().includes(searchQuery) ||
+                                            user.user_lname?.toLowerCase().includes(searchQuery) ||
+                                            user.user_email?.toLowerCase().includes(searchQuery)
+                                        )
+                                        .map((user) => (
+                                            <tr
+                                                key={user._id}
+                                                onClick={() => {
+                                                    setSelectedRowId(user._id);
+                                                    setSelectedUser(user);
+                                                }}
+                                                className={selectedRowId === user._id ? "highlighted" : ""}
+                                            >
+                                                <td>{user._id}</td>
+                                                <td>{user.user_lname}</td>
+                                                <td>{user.user_fname}</td>
+                                                <td>{user.user_email}</td>
+                                                <td>{user.user_dob}</td>
+                                                <td>{new Date(user.user_last_in).toLocaleString()}</td>
+                                                <td>{user?.user_recent_act?.trim() ? user.user_recent_act : "N/A"}</td>
+                                                <td>{user?.user_status?.trim() ? user.user_status : "Not Activated"}</td>
+                                            </tr>
+                                        ))}
 
-                                            className={selectedRowId === user._id ? "highlighted" : ""}
-                                        >
-                                            <td>{user._id}</td>
-                                            <td>{user.user_lname}</td>
-                                            <td>{user.user_fname}</td>
-                                            <td>{user.user_email}</td>
-                                            <td>{user.user_dob}</td>
-                                            {/*<td>{user.user_age}</td>*/}
-                                            <td>{new Date(user.user_last_in).toLocaleString()}</td>
-                                            <td>{user?.user_recent_act?.trim() ? user.user_recent_act : "N/A"}</td>
-                                            <td>{user?.user_status?.trim() ? user.user_status : "Not Activated"}</td>
-
-                                        </tr>
-                                    ))}
 
                                 </table>
                             </div>

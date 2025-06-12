@@ -14,15 +14,19 @@ const AdminSchema = new Schema({
     admin_password: {
         type: String
     },
-    admin_last_in:{
+    admin_last_in: {
         type: Date
     },
-    admin_recent_act:{
+    admin_recent_act: {
         type: String
     },
+    role: {
+        type: String,
+        default: 'admin'
+    }
 
-   
-    
+
+
 
 })
 

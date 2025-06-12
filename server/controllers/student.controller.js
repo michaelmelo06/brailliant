@@ -90,6 +90,17 @@ const deleteStudent = (req, res) => {
         })
 }
 
+const deleteStudentBySection = (req, res) => {
+
+    Student.deleteMany({ student_section: new mongoose.Types.ObjectId(req.params.namex) })
+        .then((result) => {
+            res.json({ result, status: 'Deleted Successfully', eto: req.params.namex });
+        })
+        .catch((err) => {
+            res.status(500).json({ message: 'Something went wrong with deleting students', err });
+        });
+};
+
 const getStudentCount = async (req, res) => {
     try {
         const count = await Student.countDocuments();
@@ -99,4 +110,4 @@ const getStudentCount = async (req, res) => {
     }
 };
 
-module.exports = { findAllStudent, testconnection, createStudent, updateStudent, deleteStudent, findStudentByName, getStudentCount }
+module.exports = { findAllStudent, testconnection, createStudent, updateStudent, deleteStudent, findStudentByName, getStudentCount, deleteStudentBySection }

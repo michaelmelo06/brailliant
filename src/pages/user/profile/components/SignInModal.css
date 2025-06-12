@@ -4,7 +4,7 @@ body.active-modal {
 
 
 .modal,
-.overlay {
+.otp-overlay {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -14,7 +14,7 @@ body.active-modal {
     position: fixed;
 }
 
-.overlay {
+.otp-overlay {
     background: rgba(49, 49, 49, 0.8);
 }
 

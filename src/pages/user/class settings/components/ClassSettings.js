@@ -74,7 +74,14 @@ export default function ClassSettings() {
                 <div className='cs-header'>
                     <label>Class Settings</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
@@ -108,7 +115,6 @@ export default function ClassSettings() {
                         </div>
                     </div>
                     <div className='cs-list'>
-                        <label>1 of 10</label>
                         <div className='cs-table'>
                             <div className='cs-table-navigation'>
                                 <input
@@ -152,6 +158,7 @@ export default function ClassSettings() {
                                         <th>Birthdate</th>
                                         <th>Age</th>
                                         <th>Gender</th>
+                                        <th>Section</th>
                                     </tr>
                                     {students.students
                                         ?.filter((student) => {
@@ -175,6 +182,7 @@ export default function ClassSettings() {
                                                 <td>{new Date(student.student_dob).toLocaleDateString()}</td>
                                                 <td>{student.student_age}</td>
                                                 <td>{student.student_gender}</td>
+                                                <td>{student.student_section_name}</td>
                                             </tr>
                                         ))}
 

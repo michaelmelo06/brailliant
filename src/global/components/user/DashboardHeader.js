@@ -7,6 +7,13 @@ import { useNavigate } from 'react-router-dom';
 export default function DashboardHeader() {
 
     const navigate = new useNavigate()
+
+    
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
+
     const [showDropdown, setShowDropdown] = useState(false);
     const [users, setUsers] = useState([])
     const [book, setAllBooks] = useState([])
@@ -36,7 +43,14 @@ export default function DashboardHeader() {
                     <input className="dashboardheader-search" type="text" placeholder="Find a book" />
 
                     <nav onClick={toggleDropdown}>
-                        <img className="icon" src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>

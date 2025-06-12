@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import AdminDropDownMenu from './AdminDropDownMenu';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import './AdminHeader.css'
 
 export default function AdminHeader(theTitle) {
+
+    const navigate = useNavigate()
+
+    const adminn = JSON.parse(localStorage.getItem('admin'));
+    if (!adminn) {
+        navigate(-1)
+    }
+
     const [title, setTitle] = new useState('')
     const [admin, setAdmin] = new useState([])
     const [showDropdown, setShowDropdown] = useState(false);

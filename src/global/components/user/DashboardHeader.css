@@ -38,7 +38,8 @@ input:focus {
 
 .icon {
     height: 3.5rem;
-    width: auto;
+    width: 3.5rem;
+
     border-radius: 50%;
     margin: 0;
     cursor: pointer;
@@ -56,9 +57,9 @@ input:focus {
     align-items: center;
 }
 
-.dashboardheader-navigation p{
+.dashboardheader-navigation p {
     margin-right: 50px;
-    margin-left : 10px;
+    margin-left: 10px;
     font-weight: bold;
 }
 
@@ -106,14 +107,14 @@ input:focus {
     flex-wrap: wrap;
     max-height: 100%;
     padding-bottom: 10px;
-    width: 1200px;
+    width: 95%;
     margin: 0 auto;
 }
 
 .dashboardheader-book {
     background-color: #e5e7eb;
-    height: 270px;
-    width: 180px;
+    height: 80%;
+    width: 15%;
     margin: 10px;
     cursor: pointer;
     transition: transform 0.2s;

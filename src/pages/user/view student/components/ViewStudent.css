@@ -3,14 +3,14 @@
     padding: 40px;
 }
 
-.vs{
+.vs {
     display: flex;
     justify-content: space-evenly;
 }
 
-.view-student-detail{
+.view-student-detail {
     margin-left: 50px;
-    
+
 }
 
 .vs-student {
@@ -45,6 +45,12 @@
     background-color: #d9d9d9;
 }
 
+.vs2 select {
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    background-color: #d9d9d9;
+}
 
 .vs1 label {
     font-weight: bold;
@@ -78,7 +84,7 @@
 }
 
 
-.reading-history{
+.reading-history {
     margin-top: 20px;
     width: 100%;
     height: 100%;
@@ -86,7 +92,7 @@
     border-radius: 30px;
 }
 
-.reading-history table{
+.reading-history table {
     padding: 30px;
     width: 100%;
     text-align: left;
@@ -100,7 +106,7 @@
     width: 50%;
 }
 
-.view-student-rh label{
+.view-student-rh label {
     font-weight: bold;
     font-size: 32px;
 }

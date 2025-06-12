@@ -73,7 +73,7 @@
     width: 100%;
     margin-top: 20px;
     text-align: left;
-    table-layout: fixed;
+    table-layout:fixed;
     border-collapse: collapse;
 }
 

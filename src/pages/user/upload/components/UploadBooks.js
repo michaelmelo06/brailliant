@@ -31,6 +31,11 @@ export default function UploadBooks() {
     const [file, setFile] = useState('')
     const [allImage, setAllImage] = useState(null)
     const [user, setUser] = useState([])
+    
+    const [selectedImage, setSelectedImage] = useState('')
+
+
+
 
     const clearForm = () => {
         setNewBook({
@@ -143,6 +148,10 @@ export default function UploadBooks() {
     const onInputChange = (e) => {
         console.log('this is png', e.target.files[0])
         setImage(e.target.files[0])
+        const file = e.target.files?.[0]
+        setSelectedImage(
+            file ? URL.createObjectURL(file) : undefined
+        )
     }
 
     const [allImages, setAllImages] = useState(null)
@@ -165,7 +174,10 @@ export default function UploadBooks() {
                     <Header />
                 </div>
                 <div className='upload-body'>
-                    <label className='up'>Upload Books</label>
+
+                    <label className='up'>
+                        <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../assets/back.png')} /></button>
+                        Upload Books</label>
 
 
                     <form className="uploadmaterial-container" onSubmit={(e) => {
@@ -176,24 +188,33 @@ export default function UploadBooks() {
                     }}>
                         <div className='left-container'>
 
-                            <label for="image-upload" className='upload-image'>
-                                Attach Image
-                            </label>
-                            <input
-                                id='image-upload'
-                                type='file'
-                                accept='image/*'
-                                onChange={onInputChange}
-                                required
-                            /><br />
-                            <button>Upload Book Cover</button>
+                            <img 
+                            className='upload-image-container'
+                            src={selectedImage}
+                            />
+
+                            <div>
+
+                                <label for="image-upload" className='upload-image'>
+                                    Upload Book Cover
+                                </label>
+
+                                <input
+                                    id='image-upload'
+                                    type='file'
+                                    accept='image/*'
+                                    onChange={onInputChange}
+                                    required
+                                />
+                            </div>
+
 
 
 
                             <div className='lower-left-container'>
 
                                 <label for="file-upload" class="custom-file-upload">
-                                    📄 Attach file here
+                                    Attach file here
                                 </label>
                                 <input
                                     id="file-upload"

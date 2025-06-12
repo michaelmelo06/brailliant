@@ -14,6 +14,7 @@ export default function ContentRequest() {
     const [selectedRowId, setSelectedRowId] = useState(null);
     const [allBooks, setAllBooks] = useState([]);
     const pendingBooks = allBooks.books?.filter(book => !book.request_book_status) || [];
+    const [searchQuery, setSearchQuery] = useState('');
 
 
     useEffect(() => {
@@ -53,7 +54,11 @@ export default function ContentRequest() {
                         </div>
                         <div className='admin-request'>
                             <div className='admin-request-actions'>
-                                <input placeholder='Search books'></input>
+                                <input
+                                    placeholder='Search books'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+                                />
                                 <div className='admin-request-buttons'>
                                     {/*<button>Remove <img src={require('../assets/delete.png')} /></button>*/}
                                 </div>
@@ -67,8 +72,18 @@ export default function ContentRequest() {
                                         <th>Genre</th>
                                         <th>Request By</th>
                                     </tr>
-                                    {allBooks.books?.map((book) => (
-                                        book.request_book_status === '' && (
+                                    {allBooks.books
+                                        ?.filter(
+                                            (book) =>
+                                                book.request_book_status === '' &&
+                                                (
+                                                    book.request_book_title?.toLowerCase().includes(searchQuery) ||
+                                                    book.request_book_author?.toLowerCase().includes(searchQuery) ||
+                                                    book.request_book_genre?.toLowerCase().includes(searchQuery) ||
+                                                    book.request_by?.toLowerCase().includes(searchQuery)
+                                                )
+                                        )
+                                        .map((book) => (
                                             <tr
                                                 key={book._id}
                                                 onClick={() => setSelectedRowId(book._id)}
@@ -80,13 +95,13 @@ export default function ContentRequest() {
                                                 <td>{book.request_book_genre}</td>
                                                 <td>{book.request_by}</td>
                                                 <td>
-                                                    <button onClick={() => { navigate('/admin/approval/book', { state: { book: book } }) }}>
+                                                    <button onClick={() => navigate('/admin/approval/book', { state: { book: book } })}>
                                                         View Details <img src={require('../assets/edit.png')} />
                                                     </button>
                                                 </td>
                                             </tr>
-                                        )
-                                    ))}
+                                        ))}
+
                                 </table>
                             </div>
 

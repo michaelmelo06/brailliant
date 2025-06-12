@@ -10,7 +10,7 @@ import AdminDashboard from './pages/archive/admin/dashboard/components/AdminDash
 import Account from './pages/archive/admin/account/Account';
 import CreateAccount from './pages/archive/admin/create/components/CreateAccount';
 import UpdateAccount from './pages/archive/admin/update/UpdateAccount';
-import AuditTrail from './pages/archive/admin/audit trail/AuditTrail';
+//import AuditTrail from './pages/archive/admin/audit trail/AuditTrail';
 
 import MaterialsCharacter from './pages/archive/materials character/MaterialsCharacter';
 import Header from './global/components/user/Header'
@@ -43,6 +43,8 @@ import AdminViewBook from './pages/aadmin/admin view book/components/AdminViewBo
 import AdminViewReal from './pages/aadmin/admin view real/components/AdminViewReal';
 import AdminCreateAccountTempt from './pages/aadmin/admin create temporary/components/AdminCreateAccountTempt';
 import AdminEditUser from './pages/aadmin/admin edit user/components/AdminEditUser';
+import EditStudent from './pages/user/edit student/components/EditStudent';
+import AuditTrail from './pages/aadmin/audit trail/AuditTrail';
 
 
 function App() {
@@ -51,13 +53,13 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          {/*<Route path="/" element={<Navigate to="/home" replace />} />*/}
+          {/*<Route path="/" element={<Navigate to="/home" replace />} />
 
 
 
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/materials' element={<Materials />}></Route>
-          {/*<Route path='/upload' element={<UploadMaterial />}></Route>*/}
+          <Route path='/upload' element={<UploadMaterial />}></Route>
           <Route path='/custom' element={<CustomText />}></Route>
           <Route path='/profile/edit' element={<UserEdit />}></Route>
           <Route path='/bd' element={<BookDetails />}></Route>
@@ -68,7 +70,8 @@ function App() {
           <Route path='/admin/create' element={<CreateAccount />}></Route>
           <Route path='/admin/update' element={<UpdateAccount />}></Route>
           <Route path='/admin/audittrail' element={<AuditTrail />}></Route>
-
+          
+*/}
           <Route path="/" element={<LandingPage />} />
           <Route path='/home' element={<Home />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
@@ -86,6 +89,7 @@ function App() {
           <Route path='/edit/profile' element={<EditProfile />}></Route>
           <Route path='/book/detail' element={<BookDetails />}></Route>
           <Route path='/book/session' element={<BookSession />}></Route>
+
           <Route path='/admin/home' element={<AdminHome />}></Route>
           <Route path='/admin/library' element={<ManageLibrary />}></Route>
           <Route path='/admin/accounts' element={<ManageAccounts />}></Route>
@@ -96,12 +100,14 @@ function App() {
           <Route path='/admin/approval/book' element={<AdminViewBook />}></Route>
           <Route path='/admin/view/book' element={<AdminViewReal />}></Route>
           <Route path='/admin/edit-account' element={<AdminEditUser />}></Route>
+          <Route path='/student/edit' element={<EditStudent />}></Route>
+          <Route path='/admin/audit-trail' element={<AuditTrail />}></Route>
 
 
           <Route path='/admin/create/account' element={<AdminCreateAccount />}></Route>
 
 
-          <Route path='/try' element={<AdminEditUser />}></Route>
+          <Route path='/try' element={<EditStudent />}></Route>
 
         </Routes>
       </BrowserRouter>

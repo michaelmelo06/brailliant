@@ -9,6 +9,7 @@ module.exports = app => {
     app.get('/api/student/:namex', StudentController.findStudentByName)
     app.put('/api/update/student/:id', StudentController.updateStudent)
     app.delete('/api/delete/student/:id', StudentController.deleteStudent)
+    app.delete('/api/delete/student/section/:namex', StudentController.deleteStudentBySection)
     app.get('/api/students/count', StudentController.getStudentCount);
 
 }

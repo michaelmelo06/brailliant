@@ -12,6 +12,11 @@ export default function AddStudent() {
 
     const navigate = new useNavigate()
 
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
+
     const [showDropdown, setShowDropdown] = useState(false);
     const [users, setUsers] = useState([])
     const [sections, setSections] = useState([])
@@ -40,7 +45,7 @@ export default function AddStudent() {
         setShowDropdown((prev) => !prev);
     };
 
-    const handleAddStudent = (e) => {
+    const handleAddStudent = async (e) => {
         e.preventDefault();
 
         ///////////////////////VALIDATIONS
@@ -112,6 +117,12 @@ export default function AddStudent() {
                 console.error("Failed to add student", error);
                 alert("Failed to add student. Please try again.");
             });
+        const newAudit = {
+            at_user: users.user_email,
+            at_date: new Date(),
+            at_action: 'Added Student'
+        };
+        await axios.post('http://localhost:8000/api/newaudittrail', newAudit);
     };
 
 
@@ -124,12 +135,22 @@ export default function AddStudent() {
                 <div className='as-header'>
                     <label>Add Student</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
                 {showDropdown && <DropDownMenu />}
                 <div className='as-body'>
+                    <div className='back-container'>
+                        <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+                    </div>
                     <form className='as'>
                         <div className='as1'>
 

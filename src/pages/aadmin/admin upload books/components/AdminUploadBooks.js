@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminUploadBooks.css'
 import axios from 'axios'
 import AdminSideNavigation from '../../../../global/components/admin/AdminSideNavigation'
@@ -6,6 +7,9 @@ import AdminHeader from '../../../../global/components/admin/AdminHeader'
 
 
 export default function AdminUploadBooks() {
+
+    const navigate = new useNavigate()
+
     const [newBook, setNewBook] = useState({
         book_title: '',
         book_author: '',
@@ -21,6 +25,7 @@ export default function AdminUploadBooks() {
     const [file, setFile] = useState('')
     const [allImage, setAllImage] = useState(null)
     const [user, setUser] = useState([])
+    const [selectedImage, setSelectedImage] = useState('')
     const title = "Upload Books"
 
     const clearForm = () => {
@@ -115,6 +120,10 @@ export default function AdminUploadBooks() {
     const onInputChange = (e) => {
         console.log(e.target.files[0])
         setImage(e.target.files[0])
+        const file = e.target.files?.[0]
+        setSelectedImage(
+            file ? URL.createObjectURL(file) : undefined
+        )
     }
 
     const [allImages, setAllImages] = useState(null)
@@ -137,11 +146,8 @@ export default function AdminUploadBooks() {
                     <AdminHeader title={title} />
                 </div>
                 <div className='upload-body'>
+                    <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
                     <label className='up'>Upload Books</label>
-
-
-
-
 
                     <form className="uploadmaterial-container" onSubmit={(e) => {
                         e.preventDefault()
@@ -151,18 +157,25 @@ export default function AdminUploadBooks() {
                     }}>
                         <div className='left-container'>
 
-                            <label for="image-upload" className='upload-image'>
-                                Attach Image
-                            </label>
-                            <input
-                                id='image-upload'
-                                type='file'
-                                accept='image/*'
-                                onChange={onInputChange}
-                                required
-                            /><br />
-                            <button><img src={require('../assets/white upload.png')} /> Upload Book Cover</button>
+                            <img
+                                className='upload-image-container'
+                                src={selectedImage}
+                            />
 
+                            <div>
+
+                                <label for="image-upload" className='upload-image'>
+                                    Upload Book Cover
+                                </label>
+
+                                <input
+                                    id='image-upload'
+                                    type='file'
+                                    accept='image/*'
+                                    onChange={onInputChange}
+                                    required
+                                />
+                            </div>
 
 
                             <div className='lower-left-container'>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminSideNavigation from '../../../../global/components/admin/AdminSideNavigation'
 import AdminHeader from '../../../../global/components/admin/AdminHeader'
 import './AdminHome.css'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -10,6 +10,12 @@ import axios from 'axios';
 export default function AdminHome() {
 
     const navigate = new useNavigate()
+
+    const admin = JSON.parse(localStorage.getItem('admin'));
+    if (!admin) {
+        navigate(-1)
+    }
+
 
     const [title, setTitle] = useState('Home')
     const [bookCount, setBookCount] = useState(0)

@@ -1,5 +1,6 @@
 const { useRef } = require("react")
 const User = require("../models/user.model")
+const bcrypt = require('bcrypt');
 
 
 const testconnection = (req, res) => {
@@ -7,7 +8,7 @@ const testconnection = (req, res) => {
 }
 
 const findAllUser = (req, res) => {
-    User.find()
+    User.find({}, '-user_password')
         .then((allUser) => {
             res.json({ users: allUser })
         })
@@ -26,15 +27,26 @@ const findUserByName = (req, res) => {
         })
 }
 
-const createUser = (req, res) => {
-    User.create(req.body)
-        .then((newUser) => {
-            res.json({ user: newUser, status: 'Okay' })
-        })
-        .catch((err) => {
-            res.json({ message: 'Something went wrong with creating', err })
-        })
-}
+
+const createUser = async (req, res) => {
+    try {
+        const { user_password, ...rest } = req.body;
+
+        
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(user_password, salt);
+
+        
+        const newUser = await User.create({
+            ...rest,
+            user_password: hashedPassword
+        });
+
+        res.json({ user: newUser, status: 'Okay' });
+    } catch (err) {
+        res.json({ message: 'Something went wrong with creating', err });
+    }
+};
 
 const updateUser = (req, res) => {
     User.findByIdAndUpdate(

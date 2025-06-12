@@ -12,6 +12,7 @@ body.active-modal {
     right: 0;
     bottom: 0;
     position: fixed;
+    z-index: 9998;
 }
 
 .overlay {
@@ -24,12 +25,13 @@ body.active-modal {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: #f1f1f1;
+    background: white;
     border-radius: 3px;
     width: 400px;
     height: 500px;
     display: flex;
     border-radius: 10px;
+    z-index: 9999;
 }
 
 .modal-content h2 {
@@ -48,6 +50,7 @@ body.active-modal {
     cursor: pointer;
     width: 40px;
     height: 40px;
+    background-color: white;
 }
 
 
@@ -58,9 +61,9 @@ body.active-modal {
 
 .loginmodal input {
     border-style: solid;
-    width: 100%;
+    width: 98%;
     height: 2rem;
-    border-radius: 5px;
+    border-radius: 10px;
     border-color: #101734;
     margin-bottom: .5rem;
 }
@@ -81,18 +84,31 @@ body.active-modal {
 
 
 .login-modal {
-  width: 100%;
-  height: 2.2rem;
-  border-radius: 5px;
-  border: none;
-  background-color: #101734;
-  margin-top: 5.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 2.2rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #101734;
+    margin-top: 70px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .login-modal:hover {
-  background-color: #101734; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #101734;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.forgot-pass {
+    text-decoration: none;
+    float: right;
+    color: #6c737f;
+    font-size: 14px;
+}
+
+.pass-input {
+    background: url("../assets/passvisible.png") no-repeat right;
+    background-size: 20px;
+    background-position-x: 97%;
 }

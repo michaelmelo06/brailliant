@@ -19,6 +19,11 @@ export default function AccountActivation() {
     const [otp, setOtp] = useState('');
     const [inputOtp, setInputOtp] = useState('');
 
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
+
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
         setEditUser(JSON.parse(localStorage.getItem('users')))
@@ -56,7 +61,7 @@ export default function AccountActivation() {
         return otp;
     };
 
-    const handleVerify = () => {
+    const handleVerify = async () => {
         const updatedData = { ...editUser, user_status: "Activated" };
 
         if (inputOtp === otp) {
@@ -70,7 +75,15 @@ export default function AccountActivation() {
                 .catch((error) => {
                     console.log(error);
                 });
-        } else {
+
+            const newAudit = {
+                at_user: users.user_email,
+                at_date: new Date(),
+                at_action: 'Activated Account'
+            };
+            await axios.post('http://localhost:8000/api/newaudittrail', newAudit);
+        }
+        else {
             alert("Invalid OTP.");
         }
 
@@ -109,15 +122,25 @@ export default function AccountActivation() {
             </div>
             <div className='aa-container'>
                 <div className='aa-header'>
+
                     <label>Account Activation</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
                 {showDropdown && <DropDownMenu />}
                 <div className='aa-body'>
                     <div className='account-activation'>
+                        <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+
                         <label className='aa-title'>Account Activation</label>
                         <div className='aa'>
                             <img className='mail' src={require('../assets/mail.png')} />

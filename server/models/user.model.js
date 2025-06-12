@@ -17,6 +17,9 @@ const UserSchema = new Schema({
     user_password: {
         type: String
     },
+    user_img: {
+        type: String
+    },
     user_last_in: {
         type: Date
     },
@@ -25,11 +28,11 @@ const UserSchema = new Schema({
     },
     user_status: {
         type: String
+    },
+    role: {
+        type: String,
+        default: 'user'
     }
-
-
-
-
 })
 
 const User = model('User', UserSchema)

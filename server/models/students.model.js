@@ -3,7 +3,7 @@ const { Schema, model } = mongoose
 
 const StudentSchema = new Schema({
 
-    
+
     student_lname: {
         type: String
     },
@@ -23,9 +23,15 @@ const StudentSchema = new Schema({
         type: String
     },
     student_section: {
+
+        
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Section',
         required: true,
+        
+    },
+    student_section_name: {
+        type: String
     },
 })
 

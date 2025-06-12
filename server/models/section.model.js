@@ -8,7 +8,7 @@ const SectionSchema = new Schema({
     section_level: {
         type: String
     },
-    section_intructor: {
+    section_instructor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './AdminCreateAccount.css'
 import AdminSideNavigation from '../../../../global/components/admin/AdminSideNavigation'
 import AdminHeader from '../../../../global/components/admin/AdminHeader'
@@ -6,7 +7,9 @@ import AdminHeader from '../../../../global/components/admin/AdminHeader'
 
 export default function AdminCreateAccount() {
 
-    const [title,setTitle] = useState('Create Account')
+    const navigate = new useNavigate()
+
+    const [title, setTitle] = useState('Create Account')
     return (
         <div className='container'>
             <div>
@@ -14,15 +17,16 @@ export default function AdminCreateAccount() {
             </div>
             <div className='admin-cs-container'>
                 <div className='admin-cs-header'>
-                    <AdminHeader title = {title} />
+                    <AdminHeader title={title} />
                 </div>
                 <div className='admin-cs-body'>
                     <div className='admin-create-account'>
+                        <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
                         <label className='create-acc-title'>Create Account</label>
                         <div className='admin-create'>
                             <div className='create-upload'>
                                 <img className='ca-upload-img' src={require('../assets/upload.png')} />
-                                <button><img  src={require('../assets/upload.png')} />Upload Picture</button>
+                                <button><img src={require('../assets/upload.png')} />Upload Picture</button>
                             </div>
                             <div className='create-acc-details'>
                                 <div className='cad'>

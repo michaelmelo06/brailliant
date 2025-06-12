@@ -118,7 +118,10 @@ export default function AdminCreateAccountTempt() {
                     <AdminHeader title={title} />
                 </div>
                 <div className='admin-cs-body'>
+
                     <div className='admin-create-account'>
+                        <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+
                         <div className='admin-create'>
 
 

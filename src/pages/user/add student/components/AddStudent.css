@@ -49,3 +49,7 @@
     align-items: center;
     justify-content: space-evenly;
 }
+.back-container{
+    margin-left: 40px;
+    margin-top: 40px;
+}

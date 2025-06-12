@@ -4,6 +4,7 @@ import './AnalyticsHeader.css'
 import DropDownMenu from '../../../../global/components/user/DropDownMenu';
 import SideNavigation from '../../../../global/components/user/SideNavigation'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Analytics() {
@@ -13,6 +14,12 @@ export default function Analytics() {
     const [studentcount, setStudentCount] = useState(0)
     const [booksCount, setBooksCount] = useState(0)
 
+    const navigate = new useNavigate()
+
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
 
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
@@ -48,7 +55,14 @@ export default function Analytics() {
                 <div className='analytics-header'>
                     <label>Class Settings</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>

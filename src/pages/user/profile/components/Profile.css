@@ -15,7 +15,7 @@
 
 .profile-img {
     height: 200px;
-    width: auto;
+    width: 200px;
     border-radius: 50%;
 }
 
@@ -31,7 +31,9 @@
     font-weight: bold;
     float: right;
     cursor: pointer;
-
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .profile-info-section {
@@ -84,15 +86,10 @@
     color: gray;
 }
 
-
-
 .profile-3 {
     display: flex;
-
     gap: 75px;
-
     margin-top: 20px;
-
 }
 
 .profile-3 label {

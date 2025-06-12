@@ -12,6 +12,8 @@ export default function Library() {
     const navigate = useNavigate()
 
     const [book, setAllBooks] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
+
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/allbooks')
@@ -23,6 +25,10 @@ export default function Library() {
             })
     }, [])
 
+    const filteredBooks = book.books?.filter((b) =>
+        b.book_title?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className='container'>
             <div>
@@ -30,18 +36,21 @@ export default function Library() {
             </div>
             <div className='library-container'>
                 <div className='library-header'>
-                    <Header />
+                    <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
                 </div>
                 <div className='library-body'>
                     <div className='library'>
                         <label>Library</label>
                         <div className='library-books'>
 
-                            {book.books?.map((book) => (
+                            {filteredBooks?.map((book) => (
                                 <img
+                                    key={book._id}
                                     src={require(`../../../../images/${book.book_img}`)}
                                     className='library-book'
-                                    onClick={() => { navigate('/book/detail', { state: { book: book } }); }}
+                                    onClick={() => {
+                                        navigate('/book/detail', { state: { book: book } });
+                                    }}
                                 />
                             ))}
 

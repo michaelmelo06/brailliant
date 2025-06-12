@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require('mongoose')
 const cors = require('cors')
+
 const app = express();
 const port = 8000;
 
@@ -10,6 +11,14 @@ const path = require('path');
 const pdfParse = require('pdf-parse')
 
 const nodemailer = require('nodemailer')
+
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const mongoSanitize = require('express-mongo-sanitize');
+
+app.use(helmet());             
+app.use(xss());               
+app.use(mongoSanitize());  
 
 
 
@@ -44,6 +53,9 @@ allStudentRoutes(app)
 const allRequestBookRoutes = require('./routes/request_book.route')
 allRequestBookRoutes(app)
 
+const AuthRoutes = require('./routes/login.route');
+AuthRoutes(app);
+
 app.listen(port, () => {
     console.log('server is running')
 })
@@ -60,7 +72,8 @@ app.get('/', async (req, res) => {
 
 
 
-const multer = require('multer')
+const multer = require('multer');
+const { useRef } = require("react");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './files')
@@ -81,6 +94,9 @@ const Book = mongoose.model("Book")
 
 require("./models/requst_book.model")
 const RequestBook = mongoose.model("RequestBook")
+
+require("./models/user.model")
+const User = mongoose.model("User")
 
 app.put('/upload-files/:id', upload.single("file"), async (req, res) => {
     console.log(req.file)
@@ -192,6 +208,24 @@ app.put('/upload-requestimage/:id', uploads.single('image'), async (req, res) =>
     }
 })
 
+app.put('/upload-profile-icon/:id', uploads.single('image'), async (req, res) => {
+    console.log(req.body)
+    const imageName = req.file.filename
+
+    try {
+        const updateUser = await User.findByIdAndUpdate(
+            req.params.id,
+            { user_img: imageName },
+            { new: true, runValidators: true }
+        );
+
+        res.json({ status: "ok", user: updateUser });
+    } catch (error) {
+        res.json({ status: 'error' })
+    }
+})
+
+
 app.get('/get-image', async (req, res) => {
     try {
         Images.find({}).then(data => {
@@ -206,6 +240,17 @@ app.get('/get-image', async (req, res) => {
 app.get('/get-requestimage', async (req, res) => {
     try {
         RequestBook.find({}).then(data => {
+            res.send({ status: 'ok', data: data })
+        })
+    } catch (error) {
+        res.json({ status: 'error' })
+
+    }
+})
+
+app.get('/get-profile-icon', async (req, res) => {
+    try {
+        User.find({}).then(data => {
             res.send({ status: 'ok', data: data })
         })
     } catch (error) {

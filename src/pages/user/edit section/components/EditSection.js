@@ -5,6 +5,7 @@ import SideNavigation from '../../../../global/components/user/SideNavigation'
 import DropDownMenu from '../../../../global/components/user/DropDownMenu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import DeleteConfirmationModal from '../../../../global/components/user/DeleteConfirmationModal';
 
 
 
@@ -13,19 +14,25 @@ export default function EditSection() {
     const navigate = new useNavigate()
 
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
     const [users, setUsers] = useState([])
 
     const [section, setSection] = useState([])
     const [students, setStudents] = useState([])
-    const [selectedStudents, setSelectedStudents] = useState([])
 
     const [selectedRowId, setSelectedRowId] = useState(null);
+
+    const [searchQuery, setSearchQuery] = useState('');
 
 
     const location = useLocation();
     const selectedSection = location.state?.section;
 
-    console.log('eto oh', section)
+    const user = JSON.parse(localStorage.getItem('users'));
+    if (!user) {
+        navigate(-1)
+    }
 
     useEffect(() => {
         if (selectedSection) {
@@ -50,18 +57,37 @@ export default function EditSection() {
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);
     };
+    const toggleConfirmation = () => {
+        setShowConfirmation((prev) => !prev);
+    };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         axios
-            .delete(`http://localhost:8000/api/delete/student/${selectedRowId._id}`)
+            .delete(`http://localhost:8000/api/delete/student/section/${section._id}`)
             .then((response) => {
                 console.log("Full section data:", response.data);
-                window.location.reload();
+            })
+            .catch((error) => {
+                console.log("Section fetch error: ", error);
+            });
+        axios
+            .delete(`http://localhost:8000/api/delete/section/${section._id}`)
+            .then((response) => {
+                console.log("Full section data:", response.data);
 
             })
             .catch((error) => {
                 console.log("Section fetch error: ", error);
             });
+        navigate('/class')
+
+        const newAudit = {
+            at_user: users.user_email,
+            at_date: new Date(),
+            at_action: 'Deleted Section'
+        };
+        await axios.post('http://localhost:8000/api/newaudittrail', newAudit);
+
     };
     return (
         <div className='container'>
@@ -72,17 +98,34 @@ export default function EditSection() {
                 <div className='es-header'>
                     <label>Edit Section</label>
                     <nav onClick={toggleDropdown}>
-                        <img className='icon' src='https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png' />
+                        <img
+                            className='icon'
+                            src={
+                                users.user_img
+                                    ? require(`../../../../images/${users.user_img}`)
+                                    : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                            }
+                        />
                         <p>{users.user_fname}</p>
                     </nav>
                 </div>
                 {showDropdown && <DropDownMenu />}
+                {showConfirmation && (
+                    <DeleteConfirmationModal
+                        onDelete={handleDelete}
+                        onCancel={toggleConfirmation}
+                    />
+                )}
                 <div className='es-body'>
                     <div className='edit-sect'>
                         <div className='es-title'>
-                            <label className='level-section'>
-                                {section?.section_level ?? 'Loading...'} {section?.section_name ?? ''}
-                            </label>
+                            <div>
+                                <button className='back-btn' onClick={() => { navigate(-1) }}><img src={require('../../../../global/asset/back.png')} /></button>
+                                <label className='level-section'>
+                                    {section?.section_level ?? 'Loading...'} {section?.section_name ?? ''}
+                                </label>
+                            </div>
+
                             <div className='es-students'>
                                 <div className='es-students-img'>
                                     <img src={require('../assets/students.png')} />
@@ -97,7 +140,12 @@ export default function EditSection() {
                         </div>
                         <div className='es-navigate'>
                             <div className='es-left'>
-                                {/*<input className='es-search' placeholder='Search student' />*/}
+                                <input
+                                    className='es-search'
+                                    placeholder='Search student'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+                                />
                             </div>
                             <div className='es-buttons'>
                                 <button onClick={() => {
@@ -107,17 +155,14 @@ export default function EditSection() {
                                     }
                                     navigate('/student/view', { state: selectedRowId })
 
-                                }}>Edit Details  <img src={require('../assets/edit.png')} /></button>
+                                }}>Edit Student Details  <img src={require('../assets/edit.png')} /></button>
                                 <button
                                     onClick={() => {
-                                        if (!selectedRowId) {
-                                            alert("Please select a student.");
-                                            return;
-                                        }
-                                        handleDelete()
+
+                                        toggleConfirmation()
                                     }}
 
-                                >Remove <img src={require('../assets/remove.png')} /></button>
+                                >Delete Section <img src={require('../assets/remove.png')} /></button>
                             </div>
                         </div>
                         <div className='es-table'>
@@ -132,9 +177,14 @@ export default function EditSection() {
                                     <th>Gender</th>
                                 </tr>
                                 {students.students
-                                    ?.filter((student) =>
-                                        selectedSection ? student.student_section === selectedSection : true
-                                    )
+                                    ?.filter((student) => {
+                                        const matchesSection = selectedSection ? student.student_section === selectedSection : true;
+                                        const matchesSearch =
+                                            student.student_fname.toLowerCase().includes(searchQuery) ||
+                                            student.student_lname.toLowerCase().includes(searchQuery) ||
+                                            student.student_mi?.toLowerCase().includes(searchQuery);
+                                        return matchesSection && matchesSearch;
+                                    })
                                     .map((student) => (
                                         <tr
                                             key={student._id}
