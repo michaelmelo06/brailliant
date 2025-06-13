@@ -268,14 +268,12 @@ export default function LandingPage() {
 
     return (
         <div className='landing-page-container' >
-
             {modal && (
                 <div className='modal'>
                     <div className='overlay' onClick={toggleModal} ></div>
                     <div className='modal-content'>
 
                         <div className='loginmodal'>
-
                             <button className='close-modal' onClick={toggleModal}>x</button>
                             <h2>Sign In</h2>
                             <br />
@@ -318,7 +316,6 @@ export default function LandingPage() {
                                 value={inputOtp}
                                 onChange={(e) => setInputOtp(e.target.value)}
                             />
-
                             <button className='otpl-login-modal' onClick={handleVerify}>Verify</button>
                         </div>
                     </div>
@@ -337,7 +334,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             )}
-
 
             {emailModal && (
                 <div className='modal'>

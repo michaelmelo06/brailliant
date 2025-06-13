@@ -24,15 +24,18 @@ export default function AccountActivation() {
         navigate(-1)
     }
 
+
+
     useEffect(() => {
         setUsers(JSON.parse(localStorage.getItem('users')))
         setEditUser(JSON.parse(localStorage.getItem('users')))
+
 
         const newOtp = generateOTP();
         setOtp(newOtp);
         sendEmail(newOtp);
         hasSentEmail.current = true;
-    }, [])
+    }, [0])
 
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);
@@ -43,7 +46,7 @@ export default function AccountActivation() {
             const response = await axios.post('http://localhost:8000/send-email', {
                 subject: "Hello from React!",
                 text: "This is a plain text email.",
-                html: "<h3>This is your OTP</h3>" + generatedOtp
+                html: "<h3>This is your account activation OTP</h3>" + generatedOtp
             });
             alert("Email sent!");
         } catch (err) {
