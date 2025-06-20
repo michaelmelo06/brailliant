@@ -62,7 +62,7 @@ export default function AdminUploadBooks() {
 
 
             clearForm();
-
+            navigate(-1)
 
         } catch (error) {
             console.error(error);

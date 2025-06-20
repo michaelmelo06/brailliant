@@ -90,9 +90,17 @@ parser.on('data', data => {
 
 app.post('/send-text', (req, res) => {
     const { message } = req.body;
+    console.log('Message to arduino:', message);
     if (arduinoPort.writable) {
-        arduinoPort.write(message + '\n');
-        res.send({ status: 'sent', message });
+        console.log('arduino is writable')
+        const lines = message.split('\n');
+        for (let line of lines) {
+            if (line.trim() !== '') {
+                console.log('Sending to Arduino:', line.trim());
+                arduinoPort.write(line.trim() + '\n');
+            }
+        }
+        res.send({ status: 'sent', message: lines });
     } else {
         res.status(500).send({ error: 'Arduino not writable' });
     }
@@ -101,7 +109,6 @@ app.post('/send-text', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening on http://localhost:${port}`);
 });
-
 
 
 

@@ -25,8 +25,12 @@ export default function TextToBraille() {
         setLoading(false);
         console.log('nag click')
 
+        const brailleArray = result.split(" ");
+        const formatted = brailleArray.map((dots, index) => `M${index + 1}:${dots}`).join('\n');
+        console.log(formatted)
+
         axios.post('http://localhost:8000/send-text', {
-            message: "Hello Arduino"
+            message: formatted
         });
     }
 

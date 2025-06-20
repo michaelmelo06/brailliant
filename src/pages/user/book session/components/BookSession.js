@@ -66,6 +66,7 @@ export default function BookSession() {
                 const initialChunk = trimmedText.slice(0, 8);
                 const result = convertTextToBrailleDots(initialChunk);
                 setBrailleDots(result);
+
             })
             .catch(err => console.error('Error extracting text:', err));
     }, []);
@@ -74,6 +75,14 @@ export default function BookSession() {
         const currentChunk = resultText.slice(currentIndex, currentIndex + 8);
         const result = convertTextToBrailleDots(currentChunk);
         setBrailleDots(result);
+
+        const brailleArray = result.split(" ");
+        const formatted = brailleArray.map((dots, index) => `M${index + 1}:${dots}`).join('\n');
+        console.log(formatted)
+
+        axios.post('http://localhost:8000/send-text', {
+            message: formatted
+        });
     }, [currentIndex, resultText]);
 
     return (
