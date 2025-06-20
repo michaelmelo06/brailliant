@@ -4,7 +4,7 @@ import './TextToBrailleHeader.css'
 import DropDownMenu from '../../../../global/components/user/DropDownMenu';
 import BrailleLetter from "./index";
 import convertTextToBrailleDots from "../components/api/translate";
-
+import axios from "axios"
 
 import SideNavigation from '../../../../global/components/user/SideNavigation'
 
@@ -24,6 +24,10 @@ export default function TextToBraille() {
         setBrailleDots(result);
         setLoading(false);
         console.log('nag click')
+
+        axios.post('http://localhost:8000/send-text', {
+            message: "Hello Arduino"
+        });
     }
 
     useEffect(() => {

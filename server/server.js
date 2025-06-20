@@ -64,14 +64,50 @@ app.listen(port, () => {
 
 
 
-
-
-app.get('/', async (req, res) => {
-    res.send("suceess")
-})
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
+const bodyParser = require('body-parser');
+const { SerialPort } = require('serialport');
+const { ReadlineParser } = require('@serialport/parser-readline');
+
+
+app.use(cors());
+app.use(bodyParser.json());
+
+const arduinoPort = new SerialPort({
+    path: 'COM1',  //JIRO PALITAN MO NALANG TO DEPENDE SA PORT. HINDI KO ALAM WALA NA KO ALAM
+    baudRate: 9600,
+});
+
+const parser = arduinoPort.pipe(new ReadlineParser({ delimiter: '\n' }));
+
+parser.on('data', data => {
+    console.log('From Arduino:', data);
+});
+
+
+app.post('/send-text', (req, res) => {
+    const { message } = req.body;
+    if (arduinoPort.writable) {
+        arduinoPort.write(message + '\n');
+        res.send({ status: 'sent', message });
+    } else {
+        res.status(500).send({ error: 'Arduino not writable' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server listening on http://localhost:${port}`);
+});
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 
 
