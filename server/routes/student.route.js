@@ -11,5 +11,4 @@ module.exports = app => {
     app.delete('/api/delete/student/:id', StudentController.deleteStudent)
     app.delete('/api/delete/student/section/:namex', StudentController.deleteStudentBySection)
     app.get('/api/students/count', StudentController.getStudentCount);
-
 }

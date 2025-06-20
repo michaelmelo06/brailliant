@@ -27,7 +27,7 @@ const findSectionByName = (req, res) => {
 }
 
 const findSectionById = (req, res) => {
-    Section.findById(req.params._id)
+    Section.findById(req.params.id)
         .then((theSection) => {
             res.json({ section: theSection });
         })

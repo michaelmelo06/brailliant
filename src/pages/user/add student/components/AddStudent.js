@@ -21,6 +21,7 @@ export default function AddStudent() {
     const [users, setUsers] = useState([])
     const [sections, setSections] = useState([])
     const [selectedSection, setSelectedSection] = useState('')
+
     const [newStudent, setNewStudent] = useState({
         student_lname: '',
         student_fname: '',
@@ -28,6 +29,7 @@ export default function AddStudent() {
         student_dob: '',
         student_gender: '',
         student_section: '',
+        student_section_name: '',
     });
 
     useEffect(() => {
@@ -47,7 +49,6 @@ export default function AddStudent() {
 
     const handleAddStudent = async (e) => {
         e.preventDefault();
-
         ///////////////////////VALIDATIONS
         if (!newStudent.student_lname.trim()) {
             alert("Last name is required.");
@@ -88,9 +89,37 @@ export default function AddStudent() {
             alert("Please select a section.");
             return;
         }
+        ///////////////////////////////////////////////////////////////////
+        const updatedData = { user_recent_act: 'Added Student' };
+        axios.get(`http://localhost:8000/api/section/id/${selectedSection}`,)
+            .then((res) => {
+                const section = res.data.section.section_name
+                const updatedNewStudent = { ...newStudent, student_section_name: section }
+                axios.post('http://localhost:8000/api/newstudent', updatedNewStudent)
+                    .then((res) => {
+                        console.log("Student added:", res.data);
+                        alert("Student added successfully!");
+                        setNewStudent({
+                            student_lname: '',
+                            student_fname: '',
+                            student_mi: '',
+                            student_dob: '',
+                            student_gender: '',
+                            student_section: '',
+                        });
+                        navigate('/class')
+                    })
+                    .catch((error) => {
+                        console.error("Failed to add student", error);
+                        alert("Failed to add student. Please try again.");
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
         /////////////////////////////////////////////////////////////////////
-        const updatedData = { user_recent_act: 'Added Student' };
+
         axios.put(`http://localhost:8000/api/update/user/${users._id}`, updatedData)
             .then(() => {
                 console.log(updatedData, "this after update");
@@ -99,24 +128,9 @@ export default function AddStudent() {
                 console.log(error);
             });
 
-        axios.post('http://localhost:8000/api/newstudent', newStudent)
-            .then((res) => {
-                console.log("Student added:", res.data);
-                alert("Student added successfully!");
-                setNewStudent({
-                    student_lname: '',
-                    student_fname: '',
-                    student_mi: '',
-                    student_dob: '',
-                    student_gender: '',
-                    student_section: '',
-                });
-                navigate('/class')
-            })
-            .catch((error) => {
-                console.error("Failed to add student", error);
-                alert("Failed to add student. Please try again.");
-            });
+
+
+
         const newAudit = {
             at_user: users.user_email,
             at_date: new Date(),
@@ -158,7 +172,11 @@ export default function AddStudent() {
                                 <label>Section:</label>
                                 <select
                                     value={newStudent.student_section}
-                                    onChange={(e) => setNewStudent({ ...newStudent, student_section: e.target.value })}
+                                    onChange={(e) => {
+                                        setSelectedSection(e.target.value)
+                                        setNewStudent({ ...newStudent, student_section: e.target.value })
+                                    }
+                                    }
                                 >
                                     <option value="">Select Section</option>
                                     {sections.sections?.map((section) => (
